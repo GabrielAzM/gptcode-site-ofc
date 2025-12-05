@@ -11,7 +11,7 @@
 }
 
 .fade-in {
-  animation: fadeIn 1.2s ease-in-out;
+  animation: fadeIn 4.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 /* Animação de slide-in */
@@ -27,7 +27,7 @@
 }
 
 .slide-in-up {
-  animation: slideInUp 1.5s ease-out;
+  animation: slideInUp 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 @keyframes slideInLeft {
@@ -42,7 +42,7 @@
 }
 
 .slide-in-left {
-  animation: slideInLeft 0.8s ease-out;
+  animation: slideInLeft 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 @keyframes slideInRight {
@@ -57,7 +57,115 @@
 }
 
 .slide-in-right {
-  animation: slideInRight 0.8s ease-out;
+  animation: slideInRight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.fade-in-up {
+  animation: slideInUp 4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Animation Delay Classes */
+.delay-1 {
+  animation-delay: 0.1s;
+}
+
+.delay-2 {
+  animation-delay: 0.15s;
+}
+
+.delay-3 {
+  animation-delay: 0.2s;
+}
+
+.delay-4 {
+  animation-delay: 0.12s;
+}
+
+.delay-5 {
+  animation-delay: 0.18s;
+}
+
+.delay-6 {
+  animation-delay: 0.22s;
+}
+
+/* Adicional Delay Classes */
+.delay-7 { animation-delay: 0.25s; }
+.delay-8 { animation-delay: 0.3s; }
+.delay-9 { animation-delay: 0.35s; }
+.delay-10 { animation-delay: 0.4s; }
+
+/* Stagger Timing for Multiple Elements */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.2s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.3s; }
+.stagger-7 { animation-delay: 0.35s; }
+.stagger-8 { animation-delay: 0.4s; }
+.stagger-9 { animation-delay: 0.45s; }
+.stagger-10 { animation-delay: 0.5s; }
+
+/* Fade-in variations for different entry points */
+.fade-in-down {
+  animation: fadeInDown 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-left {
+  animation: fadeInLeft 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fade-in-right {
+  animation: fadeInRight 3.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.scale-in {
+  animation: scaleIn 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Animação de pulso */
@@ -110,13 +218,13 @@
     border-color: transparent;
   }
   50% {
-    border-color: var(--accent-gold);
+    border-color: var(--medium-blue);
   }
 }
 
 .typing-effect {
   overflow: hidden;
-  border-right: 0.15em solid var(--accent-gold);
+  border-right: 0.15em solid var(--medium-blue);
   white-space: nowrap;
   animation: typing 3.5s steps(40, end), blink 1s step-end infinite;
 }
@@ -227,7 +335,7 @@
 .loading {
   animation: spin 1s linear infinite;
   border: 3px solid #f3f3f3;
-  border-top: 3px solid var(--accent-gold);
+  border-top: 3px solid var(--medium-blue);
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -274,6 +382,111 @@
 
 /* Ajuste para hover */
 .navbar-nav .nav-link:hover {
+  transition: all 0.6s ease;
+}
+
+/* ===== HOVER EFFECTS OTIMIZADOS - SUAVE COMO MARSHMALLOW ===== */
+
+/* Transições mais lentas para botões */
+.btn {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.btn:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições mais lentas para cards */
+.card-lift {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.card-lift:hover {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições para member cards */
+.member-card {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.member-card:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições para project cards */
+.project-card {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.project-card:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições para publication cards */
+.publication-card {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.publication-card:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições para ícones sociais */
+.social-link {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.social-link:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.member-social a {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.member-social a:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições para navbar */
+.navbar-nav .nav-link {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.navbar-nav .nav-link:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Efeito de hover para images */
+img {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+img:hover {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições para elementos glass */
+.glass-card {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.glass-card:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Transições para filtros */
+.btn-filter {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+.btn-filter:hover {
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+
+
   transition: all 0.5s ease-in-out;
   transform: scale(1.1);
 }

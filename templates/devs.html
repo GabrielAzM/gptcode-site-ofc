@@ -31,6 +31,14 @@
       .developer-card {
         background: var(--medium-blue);
         color: white;
+        border-radius: 15px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 12px 28px rgba(16, 24, 32, 0.15);
+      }
+      
+      .developer-card:hover {
+        box-shadow: 0 20px 50px rgba(16, 24, 32, 0.25);
       }
     </style>
   </head>
@@ -38,7 +46,7 @@
     <header class="page-header devs-page d-flex align-items-center full-width-section">
       <!-- ...existing code... -->
     </header>
-    <main class="container py-5" style="padding-top: 120px !important">
+    <main class="container py-5 dev-card-padding">
       <h1 class="mb-4 text-center">Desenvolvedores do Site</h1>
       <div class="row justify-content-center g-4">
         <!--Gabriel-->
@@ -46,22 +54,22 @@
           <div class="developer-card card-lift p-4 rounded-3">
             <img
               src="{{ url_for('static', filename='imagens/equipe/alunos/graduacao/gabriel.azevedo.jpeg') }}"
-              class="rounded-circle mb-3 avatar-float fade-in-up"
+              class="rounded-circle mb-3 avatar-float fade-in-up dev-image-cover"
               width="150"
+              height="150"
               alt="Gabriel Azevedo Marques"
             />
-            <h4 class="fade-in-up" style="animation-delay: 0.1s">
+            <h4 class="fade-in-up delay-1">
               Gabriel Azevedo Marques
             </h4>
-            <p class="fade-in-up" style="animation-delay: 0.15s">
+            <p class="fade-in-up delay-2">
               Desenvolvedor Front-end e Backend
             </p>
             <a
               href="https://github.com/SkyWallker616"
               target="_blank"
-              class="btn btn-dark fade-in-up"
-              style="animation-delay: 0.2s"
-              ><i class="bi bi-github"></i> GitHub</a
+              class="btn btn-dark fade-in-up delay-3"
+              ><i class="bi bi-github"></i> GitHub</a>
             >
           </div>
         </div>
@@ -74,18 +82,17 @@
               width="150"
               alt="Davi Rocha Fortes Bezerra"
             />
-            <h4 class="fade-in-up" style="animation-delay: 0.12s">
+            <h4 class="fade-in-up delay-4">
               Davi Rocha Fortes Bezerra
             </h4>
-            <p class="fade-in-up" style="animation-delay: 0.18s">
+            <p class="fade-in-up delay-5">
               Desenvolvedor Front-end
             </p>
             <a
               href="https://github.com/davirfb"
               target="_blank"
-              class="btn btn-dark fade-in-up"
-              style="animation-delay: 0.22s"
-              ><i class="bi bi-github"></i> GitHub</a
+              class="btn btn-dark fade-in-up delay-6"
+              ><i class="bi bi-github"></i> GitHub</a>
             >
           </div>
         </div>
@@ -99,18 +106,17 @@
               width="150"
               alt="Lucas Henrique Ferreira Alves"
             />
-            <h4 class="fade-in-up" style="animation-delay: 0.12s">
+            <h4 class="fade-in-up delay-4">
               Lucas Henrique Ferreira Alves
             </h4>
-            <p class="fade-in-up" style="animation-delay: 0.18s">
+            <p class="fade-in-up delay-5">
               Desenvolvedor Front-end
             </p>
             <a
               href="https://github.com/lucashf04"
               target="_blank"
-              class="btn btn-dark fade-in-up"
-              style="animation-delay: 0.22s"
-              ><i class="bi bi-github"></i> GitHub</a
+              class="btn btn-dark fade-in-up delay-6"
+              ><i class="bi bi-github"></i> GitHub</a>a
             >
           </div>
         </div>
@@ -124,18 +130,17 @@
               width="150"
               alt="Luiz Gustavo de Sousa Batista"
             />
-            <h4 class="fade-in-up" style="animation-delay: 0.12s">
+            <h4 class="fade-in-up delay-4">
               Luiz Gustavo de Sousa Batista
             </h4>
-            <p class="fade-in-up" style="animation-delay: 0.18s">
+            <p class="fade-in-up delay-5">
               Desenvolvedor Backend
             </p>
             <a
               href="https://github.com/luizgsdb"
               target="_blank"
-              class="btn btn-dark fade-in-up"
-              style="animation-delay: 0.22s"
-              ><i class="bi bi-github"></i> GitHub</a
+              class="btn btn-dark fade-in-up delay-6"
+              ><i class="bi bi-github"></i> GitHub</a>
             >
           </div>
         </div>

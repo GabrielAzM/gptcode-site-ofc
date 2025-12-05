@@ -21,55 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(member);
     });
     
-    // Modal para detalhes dos membros
-    const memberCards = document.querySelectorAll('.member-card');
-    
-    memberCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const name = this.querySelector('.member-name').textContent;
-            const role = this.querySelector('.member-role').textContent;
-            const desc = this.querySelector('.member-desc').textContent;
-            const imgSrc = this.querySelector('.member-img').src;
-            
-            // Criar modal
-            const modalHtml = `
-                <div class="modal fade" id="memberModal" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">${name}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="text-center mb-4">
-                                    <img src="${imgSrc}" alt="${name}" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
-                                </div>
-                                <h6 class="text-accent">${role}</h6>
-                                <p>${desc}</p>
-                                <div class="social-links justify-content-center mt-4">
-                                    <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
-                                    <a href="#" class="social-link"><i class="bi bi-envelope"></i></a>
-                                    <a href="#" class="social-link"><i class="bi bi-file-person"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            
-            // Adicionar modal ao DOM
-            document.body.insertAdjacentHTML('beforeend', modalHtml);
-            
-            // Mostrar modal
-            const memberModal = new bootstrap.Modal(document.getElementById('memberModal'));
-            memberModal.show();
-            
-            // Remover modal do DOM após fechar
-            document.getElementById('memberModal').addEventListener('hidden.bs.modal', function() {
-                this.remove();
-            });
-        });
-    });
+    // Modal desabilitado para detalhes dos membros
     
     // Efeito de parallax no header
     const pageHeader = document.querySelector('.page-header');

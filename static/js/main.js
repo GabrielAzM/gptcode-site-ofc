@@ -1,141 +1,67 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Navbar scroll effect
-  const nav = document.getElementById("navbar");
+  // ===== NAVBAR SCROLL HANDLER =====
+  const navbar = document.getElementById("navbar");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+  const navbarToggler = document.querySelector(".navbar-toggler");
   let lastScrollTop = 0;
-  let isScrolling = false;
 
-  // Função para detectar se estamos na página inicial
   const isHomePage = () => {
-    return (
-      window.location.pathname === "/" ||
-      window.location.pathname.includes("index.html") ||
-      window.location.pathname === "/index.html"
-    );
+    return window.location.pathname === "/" || window.location.pathname.includes("index");
   };
 
   // Aplicar classe inicial baseada na página
   if (!isHomePage()) {
-    nav.classList.add("navbar-scrolled");
+    navbar.classList.add("navbar-scrolled");
   }
 
   window.addEventListener("scroll", () => {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        const currentScroll =
-          window.pageYOffset || document.documentElement.scrollTop;
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        // Se estamos na página inicial
-        if (isHomePage()) {
-          if (currentScroll >= 50) {
-            nav.classList.add("navbar-scrolled");
-          } else {
-            nav.classList.remove("navbar-scrolled");
-          }
-        } else {
-          // Em outras páginas, sempre manter o navbar visível
-          nav.classList.add("navbar-scrolled");
-        }
-
-        // Esconder/mostrar navbar baseado na direção do scroll
-        if (currentScroll > lastScrollTop && currentScroll > 100) {
-          // Scrolling down
-          nav.style.transition = "transform 0.5s ease, opacity 0.5s ease";
-          nav.style.transform = "translateY(-100%)";
-          nav.style.opacity = "0";
-        } else {
-          // Scrolling up
-          nav.style.transform = "translateY(0)";
-          nav.style.transform = "translateY(0)";
-          nav.style.opacity = "1";
-        }
-
-        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        isScrolling = false;
-      });
+    if (isHomePage()) {
+      if (currentScroll >= 50) {
+        navbar.classList.add("navbar-scrolled");
+      } else {
+        navbar.classList.remove("navbar-scrolled");
+      }
+    } else {
+      navbar.classList.add("navbar-scrolled");
     }
-    isScrolling = true;
+
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   });
 
-  // Smooth scrolling para links internos
+  // ===== SMOOTH SCROLLING PARA LINKS INTERNOS =====
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener("click", function (e) {
       e.preventDefault();
-
       const targetId = this.getAttribute("href");
       if (targetId === "#") return;
 
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        // Mostrar navbar antes de fazer scroll
-        nav.style.transform = "translateY(0)";
-
+        // Fechar menu mobile antes de fazer scroll
+        if (navbarCollapse.classList.contains("show")) {
+          navbarToggler.click();
+        }
+        
         window.scrollTo({
           top: targetElement.offsetTop - 80,
           behavior: "smooth",
         });
-
-        // Fechar navbar mobile após clique
-        const navbarCollapse = document.querySelector(".navbar-collapse");
-        if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-          const navbarToggler = document.querySelector(".navbar-toggler");
-          if (navbarToggler) {
-            navbarToggler.click();
-          }
-        }
       }
     });
   });
 
-  // Fechar menu mobile ao clicar fora
+  // ===== FECHAR MENU AO CLICAR FORA =====
   document.addEventListener("click", function (e) {
-    const navbarCollapse = document.querySelector(".navbar-collapse");
-    const navbarToggler = document.querySelector(".navbar-toggler");
-
     if (navbarCollapse && navbarCollapse.classList.contains("show")) {
-      if (!nav.contains(e.target)) {
+      if (!navbar.contains(e.target)) {
         navbarToggler.click();
       }
     }
   });
 
-  // Mostrar navbar ao passar mouse no topo da tela
-  document.addEventListener("mousemove", function (e) {
-    if (e.clientY <= 50) {
-      nav.style.transform = "translateY(0)";
-    }
-  });
-
-  // Animação de elementos ao scroll
-  const animateOnScroll = function () {
-    const elements = document.querySelectorAll(
-      ".glass-card, .publication-card, .highlight-card"
-    );
-
-    elements.forEach((element) => {
-      const elementPosition = element.getBoundingClientRect().top;
-      const screenPosition = window.innerHeight / 1.3;
-
-      if (elementPosition < screenPosition) {
-        element.style.opacity = 1;
-        element.style.transform = "translateY(0)";
-      }
-    });
-  };
-
-  // Inicializar opacidade para animação
-  document
-    .querySelectorAll(".glass-card, .publication-card, .highlight-card")
-    .forEach((element) => {
-      element.style.opacity = 0;
-      element.style.transform = "translateY(20px)";
-      element.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-    });
-
-  window.addEventListener("scroll", animateOnScroll);
-  // Executar uma vez ao carregar a página
-  animateOnScroll();
-
-  // Tooltips
+  // ===== BOOTSTRAP TOOLTIPS =====
   const tooltipTriggerList = [].slice.call(
     document.querySelectorAll('[data-bs-toggle="tooltip"]')
   );
@@ -143,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return new bootstrap.Tooltip(tooltipTriggerEl);
   });
 
-  // Funcionalidade "Voltar ao topo"
+  // ===== BACK TO TOP BUTTON =====
   document.querySelectorAll(".back-to-top").forEach((button) => {
     button.addEventListener("click", function (e) {
       e.preventDefault();
@@ -154,18 +80,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Formulário de contato
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    // A lógica de envio do formulário agora é tratada pelo backend Flask.
-    // O JavaScript não precisa mais interceptar o evento de 'submit'.
-    // A mensagem de sucesso é renderizada pelo Jinja2 no template.
-    // Podemos manter este bloco para futuras interações de front-end, se necessário.
-  }
-
-  // Força o favicon dinamicamente
+  // ===== FAVICON DINÂMICO =====
   (function () {
-    const faviconUrl = "imagens/logos/GPTCODE-LOGO-BARRA.png";
+    const faviconUrl = "{{ url_for('static', filename='imagens/logos/GPTCODE-LOGO-BARRA.png') }}";
     let link = document.querySelector("link[rel~='icon']");
     if (!link) {
       link = document.createElement("link");
@@ -175,19 +92,83 @@ document.addEventListener("DOMContentLoaded", function () {
     link.type = "image/png";
     link.href = faviconUrl;
   })();
+});
 
-  // Ativar animações quando os elementos entram na viewport
-  const revealElements = document.querySelectorAll(".reveal");
+// ===== PAGE ANIMATIONS - SMOOTH TRANSITIONS ON NAVIGATION =====
+document.addEventListener("DOMContentLoaded", function () {
+  // Animar hero/header
+  const pageHeader = document.querySelector(".page-header, .hero, header");
+  if (pageHeader) {
+    pageHeader.classList.add("fade-in");
+  }
 
-  const revealOnScroll = () => {
-    revealElements.forEach((element) => {
-      const rect = element.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        element.classList.add("active");
-      }
-    });
+  // Animar título principal
+  const mainTitle = document.querySelector("main h1, .hero h1");
+  if (mainTitle) {
+    mainTitle.classList.add("fade-in-up", "stagger-1");
+  }
+
+  // Animar seções
+  const sections = document.querySelectorAll("section");
+  sections.forEach((section, index) => {
+    if (!section.classList.contains("fade-in")) {
+      section.classList.add("fade-in");
+    }
+  });
+
+  // Animar cards de projeto
+  const projectCards = document.querySelectorAll(".project-card");
+  projectCards.forEach((card, index) => {
+    card.classList.add("fade-in-up");
+    card.style.animationDelay = `${0.1 + index * 0.08}s`;
+  });
+
+  // Animar cards genéricos
+  const cards = document.querySelectorAll(".card, .glass-card, .highlight-card");
+  cards.forEach((card, index) => {
+    if (!card.classList.contains("fade-in-up")) {
+      card.classList.add("fade-in-up");
+      card.style.animationDelay = `${0.1 + index * 0.08}s`;
+    }
+  });
+
+  // Animar imagens
+  const images = document.querySelectorAll("section img, main img");
+  images.forEach((img, index) => {
+    if (!img.classList.contains("fade-in")) {
+      img.classList.add("fade-in-right");
+      img.style.animationDelay = `${0.25 + index * 0.1}s`;
+    }
+  });
+
+  // Animar botões
+  const buttons = document.querySelectorAll("button:not(.navbar-toggler), a.btn");
+  buttons.forEach((btn, index) => {
+    if (!btn.classList.contains("fade-in")) {
+      btn.classList.add("fade-in-up");
+      btn.style.animationDelay = `${0.3 + index * 0.06}s`;
+    }
+  });
+
+  // ===== INTERSECTION OBSERVER PARA VIEWPORT ANIMATIONS =====
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
   };
 
-  window.addEventListener("scroll", revealOnScroll);
-  revealOnScroll();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!entry.target.classList.contains("fade-in") &&
+            !entry.target.classList.contains("fade-in-up")) {
+          entry.target.classList.add("fade-in-up");
+        }
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll(".card, section, article").forEach(el => {
+    observer.observe(el);
+  });
 });
