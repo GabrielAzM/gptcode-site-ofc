@@ -1,4 +1,14 @@
+# caro usuario, este é o arquivo app.py atualizado conforme suas instruções recentes.
+# não mecha, não questione, apenas aceite as mudanças.
+# eu odeio front-end, então por favor, não me peça para fazer mais mudanças aqui.
+# obrigado.
+# atualizações 04/12, é eu tive que mecher no projeto de novo, desculpe, aqui deixo a recomendação: não veja clube da luta enquanto coda.
+# eu me identifico muito com o personagem principal, louco e sonhador.
+# meu nobre Davi, não da mais, nem eu sei como funciona esse css, ta fora de controle, eu não assumo esse filho.
+# kkkkkkk nada faz sentido nesse codigo kkkk, html e o css tão uma bagunça, mas ta funcionando, deixa assim.
+
 from flask import Flask, render_template
+
 
 app = Flask(__name__, static_folder='static', template_folder='templates')
 app.config['ENV'] = 'development'
